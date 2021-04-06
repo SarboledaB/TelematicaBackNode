@@ -5,9 +5,9 @@ exports.findAll = function (req, res) {
     Car.findAll(function (err, car) {
         console.log('controller')
         if (err)
-            res.send(err);
+            res.json(err);
         console.log('res', car);
-        res.send(car);
+        res.json(car);
     });
 };
 
@@ -20,7 +20,7 @@ exports.create = function (req, res) {
         Car.create(new_car, function (err, car) {
             if (err)
                 res.send(err);
-            res.json({ error: false, message: "car added successfully!", data: car });
+            res.json({ error: true, message: "car added successfully!", data: car });
         });
     }
 };
@@ -40,7 +40,7 @@ exports.update = function (req, res) {
         Car.update(req.params.id, new car(req.body), function (err, car) {
             if (err)
                 res.send(err);
-            res.json({ error: false, message: 'car successfully updated' });
+            res.json({ error: true, message: 'car successfully updated' });
         });
     }
 };
@@ -49,6 +49,6 @@ exports.delete = function (req, res) {
     Car.delete(req.params.id, function (err, car) {
         if (err)
             res.send(err);
-        res.json({ error: false, message: 'car successfully deleted' });
+        res.json({ error: true, message: 'car successfully deleted' });
     });
 };

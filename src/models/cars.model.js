@@ -5,7 +5,7 @@ var dbConn = require('./../../config/db.config');
 //Car object create
 var Car = function (car) {
     this.id = car.id;
-    this.brand = car.branch;
+    this.brand = car.brand;
     this.model = car.model;
     this.commercial_value = car.commercial_value;
     this.daily_rental_value = car.daily_rental_value;
@@ -54,7 +54,7 @@ Car.findAll = function (result) {
 };
 
 Car.update = function (id, car, result) {
-    dbConn.query("UPDATE cars SET id=?,brand=?,model=?,commercial_value=?,daily_rental_value=?,available=? WHERE id = ?", [car.id, car.brand, car.model, car.commercial_value, car.daily_rental_value, car.available], function (err, res) {
+    dbConn.query("UPDATE cars SET id=?, brand=? ,model=?,commercial_value=?,daily_rental_value=?,available=? WHERE id = ?", [car.id, car.brand, car.model, car.commercial_value, car.daily_rental_value, car.available], function (err, res) {
         if (err) {
             console.log("error: ", err);
             result(null, err);
