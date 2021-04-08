@@ -18,7 +18,6 @@ var Car = function (car) {
 Car.create = function (newEmp, result) {
     dbConn.query("INSERT INTO cars set ?", newEmp, function (err, res) {
         if (err) {
-            console.log("error: ", err);
             result(err, null);
         }
         else {
@@ -31,7 +30,6 @@ Car.create = function (newEmp, result) {
 Car.findById = function (id, result) {
     dbConn.query("Select * from cars where id = ? ", id, function (err, res) {
         if (err) {
-            console.log("error: ", err);
             result(err, null);
         }
         else {
@@ -43,11 +41,9 @@ Car.findById = function (id, result) {
 Car.findAll = function (result) {
     dbConn.query("Select * from cars", function (err, res) {
         if (err) {
-            console.log("error: ", err);
             result(null, err);
         }
         else {
-            console.log('Cars : ', res);
             result(null, res);
         }
     });
@@ -56,7 +52,6 @@ Car.findAll = function (result) {
 Car.update = function (id, car, result) {
     dbConn.query("UPDATE cars SET id=?, brand=? ,model=?,commercial_value=?,daily_rental_value=?,available=? WHERE id = ?", [car.id, car.brand, car.model, car.commercial_value, car.daily_rental_value, car.available], function (err, res) {
         if (err) {
-            console.log("error: ", err);
             result(null, err);
         } else {
             result(null, res);
@@ -67,7 +62,6 @@ Car.update = function (id, car, result) {
 Car.delete = function (id, result) {
     dbConn.query("DELETE FROM cars WHERE id = ?", [id], function (err, res) {
         if (err) {
-            console.log("error: ", err);
             result(null, err);
         }
         else {
