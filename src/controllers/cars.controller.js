@@ -3,10 +3,8 @@ const Car = require('../models/cars.model');
 
 exports.findAll = function (req, res) {
     Car.findAll(function (err, car) {
-        console.log('controller')
         if (err)
             res.json(err);
-        console.log('res', car);
         res.json(car);
     });
 };
